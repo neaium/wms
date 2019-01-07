@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="menuitems">#FF00FF00</color>
+    <color name="menubar_item_foreground">#FF00FF00</color>
+    <color name="menubar_item_background_selected">#95d238</color>
+    <color name="menubar_item_background_normal">#fff</color>
+    <color name="app_background">#FFF3F3F3</color>
+    <color name="barre_mode_txt">#FF4D4D4D</color>
+    <color name="diag_label">#FF3C3C3B</color>
+    <color name="checkbox_disabled">#66000000</color>
+    <color name="checkbox_uncheck">#88000000</color>
+    <color name="selected">#B2D56D</color>
+    <color name="translate">#00FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="orange">#ED6831</color>
+    <color name="blue">#0000C6</color>
+    <color name="green">#95D238</color>
+    <color name="red">#CC0000</color>
+    <color name="gray">#C0C0C0</color>
+    <color name="lgray">#F4F4F4</color>
+    <color name="colorLockBackground">#4a5559</color>
+    <color name="btm">#e0000000</color>
+    <color name="yellow">#FFC125</color>
+    <color name="l_blue">#87ceff</color>
+    <color name="m_blue">#96CDCD</color>
+    <color name="m_green">#528B8B</color>
+    <color name="s_green">#458B74</color>
+</resources>
