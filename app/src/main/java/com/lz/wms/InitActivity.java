@@ -7,12 +7,16 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 import com.lz.wms.config.RouterTable;
 
+/**
+ * @author Neaium
+ * 初始化活动
+ */
 public class InitActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().build(RouterTable.menu).navigation();
+        ARouter.getInstance().build(RouterTable.login).navigation();
         finish();
     }
 }

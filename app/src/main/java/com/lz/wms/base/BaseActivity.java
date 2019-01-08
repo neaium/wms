@@ -19,6 +19,7 @@ import java.lang.reflect.ParameterizedType;
 import com.lz.wms.R;
 import com.lz.wms.entity.DialogMessage;
 import com.lz.wms.ui.login.LoginViewModel;
+
 import butterknife.ButterKnife;
 
 /**
@@ -26,26 +27,31 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatActivity {
     protected abstract int getLayoutResId();
+
     protected abstract void initView();
+
     protected abstract void initObserver();
+
     protected VM viewModel;
     protected AlertDialog messageDiaog;
+    protected @Nullable
+    TextView title;
+    protected @Nullable
+    Toolbar toolbar;
 
-    protected @Nullable TextView title;
-    protected @Nullable Toolbar toolbar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(hasTitleBar()){
-            LinearLayout root= (LinearLayout) getLayoutInflater().inflate(R.layout.activity_base,null);
-            View child=getLayoutInflater().inflate(getLayoutResId(),null);
-            LinearLayout.LayoutParams layoutParams= new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,0);
-            layoutParams.weight=1;
+        if (hasTitleBar()) {
+            LinearLayout root = (LinearLayout) getLayoutInflater().inflate(R.layout.activity_base, null);
+            View child = getLayoutInflater().inflate(getLayoutResId(), null);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0);
+            layoutParams.weight = 1;
             child.setLayoutParams(layoutParams);
             root.addView(child);
             setContentView(root);
-            title=findViewById(R.id.toolbar_title);
-            toolbar=findViewById(R.id.toolbar);
+            title = findViewById(R.id.toolbar_title);
+            toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle("");
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -54,16 +60,17 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatAc
                     onBackPressed();
                 }
             });
-        }else{
+        } else {
             setContentView(getLayoutResId());
         }
         ButterKnife.bind(this);
         mInitView();
-        viewModel=ViewModelProviders.of(this).get(getVMClass());
+        viewModel = ViewModelProviders.of(this).get(getVMClass());
         mInitObserver();
     }
-    private void mInitView(){
-        messageDiaog=new AlertDialog.Builder(this).setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+    private void mInitView() {
+        messageDiaog = new AlertDialog.Builder(this).setNegativeButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -72,20 +79,19 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatAc
         initView();
     }
 
-    private void mInitObserver(){
+    private void mInitObserver() {
         viewModel.dialogMessageMutableLiveData.observe(this, new Observer<DialogMessage>() {
             @Override
             public void onChanged(@Nullable DialogMessage dialogMessage) {
-                if(dialogMessage!=null){
-                    messageDiaog.setMessage(dialogMessage.message);
-                    messageDiaog.show();
+                if (dialogMessage != null) {
+                    showDialog(dialogMessage.message);
                 }
             }
         });
         viewModel.finishMutableLiveData.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean finish) {
-                if(finish!=null&&finish){
+                if (finish != null && finish) {
                     finish();
                 }
             }
@@ -93,13 +99,17 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatAc
         initObserver();
     }
 
-    private final Class<VM> getVMClass()
-    {
-        Class<VM> tClass = (Class<VM>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    protected void showDialog(String message){
+        messageDiaog.setMessage(message);
+        messageDiaog.show();
+    }
+
+    private final Class<VM> getVMClass() {
+        Class<VM> tClass = (Class<VM>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return tClass;
     }
 
-    protected boolean hasTitleBar(){
+    protected boolean hasTitleBar() {
         return true;
     }
 
