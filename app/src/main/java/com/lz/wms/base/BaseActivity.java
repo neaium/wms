@@ -21,6 +21,9 @@ import com.lz.wms.entity.DialogMessage;
 import com.lz.wms.ui.login.LoginViewModel;
 import butterknife.ButterKnife;
 
+/**
+ * @author neaium
+ */
 public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatActivity {
     protected abstract int getLayoutResId();
     protected abstract void initView();
