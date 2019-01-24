@@ -6,8 +6,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.lz.wms.base.BaseViewModel;
 import com.lz.wms.config.RouterTable;
 import com.lz.wms.entity.DialogMessage;
-import com.lz.wms.entity.RequestLogin;
-import com.lz.wms.entity.ResponseLogin;
+import com.lz.wms.entity.api.RequestLogin;
+import com.lz.wms.entity.api.ResponseLogin;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -16,8 +16,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginViewModel extends BaseViewModel {
 
-    public void login(String username,String password,int type){
-        api.login(new RequestLogin(username,password,type))
+    public void login(String username,String password){
+        api.login(new RequestLogin(username,password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ResponseLogin>() {
@@ -28,11 +28,11 @@ public class LoginViewModel extends BaseViewModel {
 
                     @Override
                     public void onNext(ResponseLogin responseLogin) {
-                        if(responseLogin.code==1){
+                        if(responseLogin.code==0){
                             ARouter.getInstance().build(RouterTable.menu).navigation();
                             finishMutableLiveData.postValue(true);
                         }else{
-                            dialogMessageMutableLiveData.postValue(new DialogMessage(responseLogin.msg));
+                            dialogMessageMutableLiveData.postValue(new DialogMessage(responseLogin.message));
                         }
                     }
 

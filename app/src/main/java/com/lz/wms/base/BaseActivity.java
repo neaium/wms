@@ -66,6 +66,7 @@ public abstract class BaseActivity<VM extends BaseViewModel> extends AppCompatAc
         ButterKnife.bind(this);
         mInitView();
         viewModel = ViewModelProviders.of(this).get(getVMClass());
+        getLifecycle().addObserver(viewModel);
         mInitObserver();
     }
 

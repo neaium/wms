@@ -16,7 +16,7 @@ public class InitActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ARouter.getInstance().build(RouterTable.login).navigation();
+        ARouter.getInstance().build(RouterTable.menu).navigation();
         finish();
     }
 }

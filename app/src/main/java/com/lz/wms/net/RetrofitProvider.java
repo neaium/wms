@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public final class RetrofitProvider {
-    public static final String BASE_URL = "http://127.0.0.1/";
+    public static final String BASE_URL = "http://deopenapi.gitwms.com/";
     private static Api api = null;
 
     public static Api getApi() {
