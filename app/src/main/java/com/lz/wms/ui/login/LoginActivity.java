@@ -1,6 +1,8 @@
 package com.lz.wms.ui.login;
 
+import android.arch.lifecycle.Observer;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,6 +20,9 @@ import com.lz.wms.R;
 import com.lz.wms.base.BaseActivity;
 import com.lz.wms.config.RouterTable;
 import com.lz.wms.entity.LoginType;
+import com.lz.wms.entity.api.ResponseOutType;
+import com.lz.wms.entity.api.ResponseWarehouseType;
+import com.lz.wms.ui.outbound.OutTypeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,24 +54,31 @@ public class LoginActivity extends BaseActivity<LoginViewModel> {
 
     @Override
     protected void initView() {
-        loginTypeAdapter = LoginTypeAdapter.getDefault();
-        type.setAdapter(loginTypeAdapter);
     }
 
 
     @Override
     protected void initObserver() {
+        viewModel.warehouseType.observe(this, new Observer<List<ResponseWarehouseType.ResultBean>>() {
+            @Override
+            public void onChanged(@Nullable List<ResponseWarehouseType.ResultBean> data) {
+                if(data!=null){
+                    type.setAdapter(new LoginTypeAdapter(data));
+
+                }
+            }
+        });
 
     }
 
     @OnClick(R.id.login_btn)
     public void login() {
-        int loginType = loginTypeAdapter.getItem(type.getSelectedItemPosition()).type;
+        String SnNum = loginTypeAdapter.getItem(type.getSelectedItemPosition()).SnNum;
         if (userName.getText().length() == 0) {
             showDialog("请填写用户名!");
         } else if (password.getText().length() == 0) {
             showDialog("请填写密码!");
-        } else if (loginType == -1) {
+        } else if (SnNum==null) {
             showDialog("请选择仓库!");
         } else {
             viewModel.login(userName.getText().toString(), password.getText().toString());

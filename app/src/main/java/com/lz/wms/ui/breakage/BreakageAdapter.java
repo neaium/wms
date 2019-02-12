@@ -1,4 +1,4 @@
-package com.lz.wms.ui.inbound;
+package com.lz.wms.ui.breakage;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,18 +6,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.lz.wms.entity.LoginType;
-import com.lz.wms.entity.api.ResponseInType;
+import com.lz.wms.entity.api.ResponseBreakageType;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
-public class InTypeAdapter extends BaseAdapter {
+public class BreakageAdapter extends BaseAdapter {
+    private List<ResponseBreakageType.ResultBean> datas;
 
-
-    private List<ResponseInType.ResultBean> datas;
-
-    public InTypeAdapter(List<ResponseInType.ResultBean> datas) {
+    public BreakageAdapter(List<ResponseBreakageType.ResultBean> datas) {
         this.datas = datas;
     }
 
@@ -27,7 +24,7 @@ public class InTypeAdapter extends BaseAdapter {
     }
 
     @Override
-    public ResponseInType.ResultBean getItem(int position) {
+    public ResponseBreakageType.ResultBean getItem(int position) {
         return datas.get(position);
     }
 
@@ -45,6 +42,4 @@ public class InTypeAdapter extends BaseAdapter {
         tv.setText(getItem(position).Description);
         return convertView;
     }
-
-
 }

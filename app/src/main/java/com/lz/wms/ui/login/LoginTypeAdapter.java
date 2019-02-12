@@ -7,26 +7,16 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lz.wms.entity.LoginType;
+import com.lz.wms.entity.api.ResponseWarehouseType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginTypeAdapter extends BaseAdapter {
 
-    public static final LoginTypeAdapter getDefault(){
-        List<LoginType> datas=new ArrayList<>();
-        datas.add(new LoginType("请选择仓库",-1));
-        datas.add(new LoginType("北京仓库",0));
-        datas.add(new LoginType("上海仓库",1));
-        datas.add(new LoginType("广州仓库",4));
-        datas.add(new LoginType("深圳仓库",5));
-        return new LoginTypeAdapter(datas);
-    }
+    private List<ResponseWarehouseType.ResultBean> datas;
 
-
-    private List<LoginType> datas;
-
-    public LoginTypeAdapter(List<LoginType> datas){
+    public LoginTypeAdapter(List<ResponseWarehouseType.ResultBean> datas){
         this.datas=datas;
     }
 
@@ -36,7 +26,7 @@ public class LoginTypeAdapter extends BaseAdapter {
     }
 
     @Override
-    public LoginType getItem(int position) {
+    public ResponseWarehouseType.ResultBean getItem(int position) {
         return datas.get(position);
     }
 
@@ -51,7 +41,7 @@ public class LoginTypeAdapter extends BaseAdapter {
             convertView=LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent,false);
         }
         TextView tv= (TextView) convertView;
-        tv.setText(getItem(position).name);
+        tv.setText(getItem(position).WarehouseName);
         return convertView;
     }
 

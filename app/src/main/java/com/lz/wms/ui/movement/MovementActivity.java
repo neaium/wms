@@ -16,7 +16,7 @@ public class MovementActivity extends BaseActivity<BaseViewModel> {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_breakage;
+        return R.layout.activity_movement;
     }
 
     @Override
