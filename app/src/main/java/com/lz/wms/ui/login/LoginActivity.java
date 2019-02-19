@@ -73,14 +73,14 @@ public class LoginActivity extends BaseActivity<LoginViewModel> {
 
     @OnClick(R.id.login_btn)
     public void login() {
-        String SnNum = loginTypeAdapter.getItem(type.getSelectedItemPosition()).SnNum;
+     //   String SnNum = loginTypeAdapter.getItem(type.getSelectedItemPosition()).SnNum;
         if (userName.getText().length() == 0) {
             showDialog("请填写用户名!");
         } else if (password.getText().length() == 0) {
             showDialog("请填写密码!");
-        } else if (SnNum==null) {
+        }/* else if (SnNum==null) {
             showDialog("请选择仓库!");
-        } else {
+        }*/ else {
 
             viewModel.login(userName.getText().toString(), password.getText().toString());
         }
