@@ -155,11 +155,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="50dp"
         >
+
         <ListView
             android:id="@+id/second_list_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"></ListView>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"

@@ -10,5 +10,6 @@ public final class RouterTable {
     public static final String breakage = "/app/breakage";
     public static final String movement = "/app/movement";
     public static final String check = "/app/check";
+    public static final String addInbound = "/app/addInbound";
 
 }

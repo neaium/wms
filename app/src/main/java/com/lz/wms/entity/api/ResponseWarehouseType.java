@@ -1,5 +1,7 @@
 package com.lz.wms.entity.api;
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 public class ResponseWarehouseType extends BaseResponse {
@@ -17,6 +19,10 @@ public class ResponseWarehouseType extends BaseResponse {
        public String SnNum;
        public String WarehouseName;
 
-
+        @NonNull
+        @Override
+        public String toString() {
+            return WarehouseName;
+        }
     }
 }

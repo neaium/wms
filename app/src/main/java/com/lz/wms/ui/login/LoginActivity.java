@@ -81,7 +81,6 @@ public class LoginActivity extends BaseActivity<LoginViewModel> {
         }/* else if (SnNum==null) {
             showDialog("请选择仓库!");
         }*/ else {
-
             viewModel.login(userName.getText().toString(), password.getText().toString());
         }
     }
