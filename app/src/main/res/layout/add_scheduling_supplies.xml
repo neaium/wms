@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -52,7 +53,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/spinner_Warehouse"
+            android:id="@+id/schedule_name"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"
@@ -90,7 +91,7 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/ed_producer"
+                    android:id="@+id/specifications"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_alignParentLeft="true"
@@ -103,7 +104,7 @@
                     android:paddingLeft="5dp" />
 
                 <EditText
-                    android:id="@+id/ed_producer1"
+                    android:id="@+id/date"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="15dp"
@@ -139,7 +140,7 @@
             android:gravity="center_vertical">
 
             <EditText
-                android:id="@+id/ed_consignor"
+                android:id="@+id/schedule_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="60dp"
@@ -177,7 +178,7 @@
             android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/ed_add_suppies_date"
+            android:id="@+id/add_date"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"

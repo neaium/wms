@@ -1,5 +1,6 @@
 package com.lz.wms.ui.setting;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -38,13 +39,13 @@ public class SettingActivity extends BaseActivity<BaseViewModel> {
 
     @Override
     protected void initView() {
-        pref=PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isRemember=pref.getBoolean("remember_address",false);
-        if (isRemember){
-            String address=pref.getString("address","");
-            addressEdit.setText(address);
-            remember.setChecked(true);
-        }
+       pref=PreferenceManager.getDefaultSharedPreferences(this);
+       boolean isRemember=pref.getBoolean("remember_address",false);
+       if (isRemember){
+           String address=pref.getString("address","");
+           addressEdit.setText(address);
+           remember.setChecked(true);
+       }
         title.setText("设置");
         title.setTextSize(18f);
         title.setTextColor(ContextCompat.getColor(this, R.color.white));
@@ -55,13 +56,15 @@ public class SettingActivity extends BaseActivity<BaseViewModel> {
         String address=addressEdit.getText().toString();
         editor=pref.edit();
         if (remember.isChecked()){
-            editor.putBoolean("remember_address",true);
             editor.putString("address",address);
+            editor.putBoolean("remember_address",true);
         }else {
             editor.clear();
         }
         editor.apply();
         finish();
+
+
 
     }
     @Override

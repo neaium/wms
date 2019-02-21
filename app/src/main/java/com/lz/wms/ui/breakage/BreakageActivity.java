@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.lz.wms.R;
 import com.lz.wms.base.BaseActivity;
 import com.lz.wms.base.BaseViewModel;
@@ -21,6 +22,7 @@ import com.lz.wms.ui.outbound.OutboundViewModel;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 @Route(path = RouterTable.breakage)
 public class BreakageActivity extends BaseActivity<BreakageViewModel> {
@@ -61,6 +63,10 @@ public class BreakageActivity extends BaseActivity<BreakageViewModel> {
             }
         });
 
+    }
+    @OnClick(R.id.btn_add_supplies)
+    public void addSupplies() {
+        ARouter.getInstance().build(RouterTable.addBreakage).navigation();
     }
 
 }

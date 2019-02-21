@@ -32,7 +32,8 @@
         <activity android:name=".ui.check.CheckActivity" />
         <activity android:name=".ui.scheduling.SchedulingActivity" />
         <activity android:name=".ui.setting.SettingActivity" />
-        <activity android:name=".ui.inbound.AddInboundActivity"></activity>
+        <activity android:name=".ui.inbound.AddInboundActivity"/>
+        <activity android:name=".ui.breakage.AddBreakageActivity"/>
     </application>
 
 </manifest>
