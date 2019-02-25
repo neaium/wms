@@ -3,8 +3,12 @@ package com.lz.wms.ui.inbound;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.util.Log;
 
 import com.lz.wms.base.BaseViewModel;
+import com.lz.wms.entity.InboundItem;
+import com.lz.wms.entity.api.RequestAdd;
+import com.lz.wms.entity.api.ResponseAdd;
 import com.lz.wms.entity.api.ResponseInType;
 import com.lz.wms.entity.api.ResponseWarehouseType;
 
@@ -70,6 +74,32 @@ public class InboundViewModel extends BaseViewModel {
                         if(responseWarehouseType.code==1){
                             warehouseType.postValue(responseWarehouseType.Result);
                         }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void add(List<InboundItem> items){
+        api.add(new RequestAdd("","",0,"","",items))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseAdd>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ResponseAdd response) {
+                        Log.e("onNext",response.code+response.message+response.Result);
                     }
 
                     @Override

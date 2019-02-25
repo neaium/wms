@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
@@ -32,6 +33,9 @@ public class InboundActivity extends BaseActivity<InboundViewModel> {
     Spinner inType;
     @BindView(R.id.spinner_Warehouse)
     Spinner warehouse;
+    @BindView(R.id.second_list_view)
+    ListView listView;
+    InboundAdapter adapter;
 
     @Override
     protected int getLayoutResId() {
@@ -43,6 +47,8 @@ public class InboundActivity extends BaseActivity<InboundViewModel> {
         title.setText("新增入库单");
         title.setTextSize(18f);
         title.setTextColor(ContextCompat.getColor(this, R.color.white));
+        adapter=new InboundAdapter();
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -74,6 +80,12 @@ public class InboundActivity extends BaseActivity<InboundViewModel> {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==88&&resultCode==RESULT_OK){
             InboundItem item= (InboundItem) data.getSerializableExtra("data");
+            adapter.addData(item);
         }
+    }
+
+    @OnClick(R.id.btn_save)
+    public void save() {
+        viewModel.add(adapter.datas);
     }
 }

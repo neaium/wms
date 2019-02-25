@@ -1,7 +1,6 @@
 package com.lz.wms.base;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,7 +16,6 @@ import java.lang.reflect.ParameterizedType;
 
 import com.lz.wms.R;
 import com.lz.wms.entity.DialogMessage;
-import com.lz.wms.ui.login.LoginViewModel;
 
 import butterknife.ButterKnife;
 
